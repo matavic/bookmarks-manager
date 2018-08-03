@@ -5,19 +5,41 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    
-                    @include('partials.messages') 
-                    <button class="btn btn-primary btn-lg"
+                <div class="card-header"><h2 class="d-inline">My Bookmarks</h2>
+                    <button class="btn btn-primary float-right"
                         data-toggle="modal"
                         data-target="#addModal"
                         type="button" name="button">Add Bookmark
                     </button>
                 </div>
+            </div>       
+            @include('partials.messages') 
+            @if(count($bookmarks)>0)
+                
+                    <div class="card-deck">
+                        <ul class="list-group mt-3">
+                            @foreach($bookmarks as $bookmark)
+                                 
+                                     <div class="card bg-light mt-3">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{$bookmark->name}}</h4>
+                                            <p class="card-text"><a href="{{$bookmark->url}}" target="_blank">{{$bookmark->url}}</a></p> 
+                                        </div>    
+                                        <div class="card-footer">
+                                            <small>{{$bookmark->description}}
+                                            <button class="btn btn-danger btn-sm float-right p-1">Delete</button></small>
+                                        </div>
+                                    </div>
+                            
+                            @endforeach
+                        
+                        </ul>
+                    </div>    
+
+                    @else
+                        <p>No Bookmarks found</p>
+                    @endif
             </div>
-        </div>
     </div>
 </div>
 
