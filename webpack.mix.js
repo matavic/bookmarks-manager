@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -10,6 +11,17 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.webpackConfig({
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: 'popper.js' //not sure if this is necessary
+    })
+  ]
+});
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix
+  .js('resources/assets/js/app.js', 'public/js')
+  .sass('resources/assets/sass/app.scss', 'public/css');

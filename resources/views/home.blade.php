@@ -27,7 +27,7 @@
                                         </div>    
                                         <div class="card-footer">
                                             <small>{{$bookmark->description}}
-                                            <button class="btn btn-danger btn-sm float-right p-1">Delete</button></small>
+                                            <button data-id="{{$bookmark->id}}" class="btn btn-danger btn-sm float-right p-1 delete-bookmark">Delete</button></small>
                                         </div>
                                     </div>
                             
